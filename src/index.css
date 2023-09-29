@@ -1,0 +1,56 @@
+:root {
+  --gray-100: #fbf9fe;
+  --gray-200: #afabb6;
+  --gray-300: #252529;
+  --gray-400: #17171a;
+  --gray-500: #111112;
+  --gray-600: #0c0c0d;
+
+  --brand-purple-light: #a881e6;
+  --brand-purple: #7450ac;
+  --brand-purple-dark: #523480;
+
+  --green-light: #4e995e;
+  --green: #2f723d;
+
+  --pink: #db5bbf;
+  --pink-dark: #251622;
+
+  --orange: #e07b67;
+  --orange-dark: #261a17;
+
+  --yellow: #bb9f3a;
+  --yellow-dark: #211e12;
+
+  --lime: #8cad51;
+  --lime-dark: #1c2015;
+
+  --blue: #7b94cb;
+  --blue-dark: #1a1d23;
+}
+
+/* CSS Reset*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--brand-purple-light) inset;
+}
+
+body {
+  color: var(--gray-100);
+  background-color: var(--gray-600);
+
+  font-family: "Inter", sans-serif;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}

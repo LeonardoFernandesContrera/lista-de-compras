@@ -1,0 +1,54 @@
+.shoppingForm {
+  display: grid;
+  gap: 0.75rem;
+  grid-auto-flow: column;
+}
+
+.formControl {
+}
+
+.label {
+  color: var(--gray-200);
+  font-size: 0.75rem;
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--gray-300);
+  background: var(--gray-500);
+  color: var(--gray-100);
+  font-size: 0.875rem;
+  line-height: 1rem;
+  border-radius: 0.375rem;
+}
+
+.input[id="quantity"] {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--gray-300);
+  background: var(--gray-400);
+  color: var(--gray-100);
+  font-size: 0.875rem;
+  line-height: 1rem;
+  border-radius: 0.375rem;
+}
+
+.select[id="unit"] {
+  width: fit-content;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.qauntityInput {
+  display: flex;
+  align-items: center;
+}

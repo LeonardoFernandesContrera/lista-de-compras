@@ -1,0 +1,18 @@
+/* CSS Modules*/
+
+.header img {
+  width: 100%;
+  object-fit: cover;
+  object-position: left top;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+.main {
+  max-width: 50rem;
+  margin-top: -7.5rem; /*Unidade relativa */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem;
+}

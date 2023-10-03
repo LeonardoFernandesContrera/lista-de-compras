@@ -1,6 +1,14 @@
 import { Plus } from "lucide-react";
 import styles from "./ShoppingForm.module.css";
 
+/**
+ * console.log(styles)
+ * {
+ *  shoppingForm: '_shoppingForm-dhs123sdfa',
+ *  formControl:
+ * }
+ */
+
 function ShoppingForm() {
   return (
     <form className={styles.shoppingForm}>
@@ -15,7 +23,7 @@ function ShoppingForm() {
         <label className={styles.label} htmlFor="quantity">
           Quantidade
         </label>
-        <div className={styles.qauntityInput}>
+        <div className={styles.quantityInput}>
           <input className={styles.input} type="number" id="quantity" />
           <select id="unit" className={styles.select}>
             <option value="unidade">Un.</option>
@@ -38,7 +46,11 @@ function ShoppingForm() {
         </select>
       </div>
 
-      <button type="submit" aria-label="Adicionar Item">
+      <button
+        type="submit"
+        className={styles.submitButton}
+        aria-label="Adicionar Item"
+      >
         <Plus size={24} />
       </button>
     </form>

@@ -16,3 +16,18 @@
   margin-right: auto;
   padding: 1.5rem;
 }
+
+.main h1 {
+  color: var(--gray-100);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.itemList {
+  margin-top: 1rem;
+}
+
+.itemList li + li {
+  margin-top: 0.5rem;
+}

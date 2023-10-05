@@ -78,3 +78,12 @@
 .submitButton:hover {
   background: var(--brand-purple-dark);
 }
+
+@media (max-width: 600px) {
+  .shoppingForm {
+    grid-template-columns: 1fr 1fr;
+  }
+  .shoppingForm div:first-child {
+    grid-column: 1/4;
+  }
+}

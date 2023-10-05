@@ -81,3 +81,36 @@
 .item > input[type="checkbox"]:focus {
   box-shadow: 0 0 0 2px var(--brand-purple-light);
 }
+
+.category {
+  border-radius: 99999px;
+  display: flex;
+  gap: 0.375rem;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.category[data-category="legume"] {
+  color: var(--lime);
+  background: var(--lime-dark);
+}
+
+.category[data-category="bebida"] {
+  color: var(--blue);
+  background: var(--blue-dark);
+}
+
+.category[data-category="carne"] {
+  color: var(--pink);
+  background: var(--pink-dark);
+}
+
+.category[data-category="padaria"] {
+  color: var(--yellow);
+  background: var(--yellow-dark);
+}
+
+.category[data-category="fruta"] {
+  color: var(--orange);
+  background: var(--orange-dark);
+}

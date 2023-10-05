@@ -54,3 +54,9 @@ input,
 select {
   font-family: inherit;
 }
+
+@media (max-width: 600px) {
+  html {
+    font-size: 87.5%;
+  }
+}

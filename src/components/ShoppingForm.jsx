@@ -1,5 +1,6 @@
 import { Plus } from "lucide-react";
 import styles from "./ShoppingForm.module.css";
+import { useState } from "react";
 
 /**
  * console.log(styles)
@@ -9,14 +10,41 @@ import styles from "./ShoppingForm.module.css";
  * }
  */
 
-function ShoppingForm() {
+function ShoppingForm({ onSubmit }) {
+  const [name, setname] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [unit, setUnit] = useState("unidade");
+  const [category, setCategory] = useState("padaria");
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = {
+      name,
+      quantity,
+      unit,
+      category,
+    };
+
+    onSubmit(formData);
+  }
+
   return (
-    <form className={styles.shoppingForm}>
+    <form
+      onSubmit={(event) => handleSubmit(event)}
+      className={styles.shoppingForm}
+    >
       <div className={styles.formControl}>
         <label className={styles.label} htmlFor="name">
           Item
         </label>
-        <input className={styles.input} type="text" id="name" />
+        <input
+          className={styles.input}
+          type="text"
+          id="name"
+          value={name}
+          onChange={(event) => setname(event.target.value)}
+        />
       </div>
 
       <div className={styles.formControl}>
@@ -24,8 +52,19 @@ function ShoppingForm() {
           Quantidade
         </label>
         <div className={styles.quantityInput}>
-          <input className={styles.input} type="number" id="quantity" />
-          <select id="unit" className={styles.select}>
+          <input
+            className={styles.input}
+            type="number"
+            id="quantity"
+            value={quantity}
+            onChange={(event) => setQuantity(event.target.value)}
+          />
+          <select
+            id="unit"
+            className={styles.select}
+            value={unit}
+            onChange={(event) => setUnit(event.target.value)}
+          >
             <option value="unidade">Un.</option>
             <option value="litro">L</option>
             <option value="kilograma">Kg</option>
@@ -37,7 +76,12 @@ function ShoppingForm() {
         <label className={styles.label} htmlFor="category">
           Categoria
         </label>
-        <select className={styles.select} id="category">
+        <select
+          className={styles.select}
+          id="category"
+          value={category}
+          onChange={(event) => setCategory(event.target.value)}
+        >
           <option value="padaria">Padaria</option>
           <option value="legume">legume</option>
           <option value="carne">Carne</option>

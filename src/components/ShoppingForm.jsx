@@ -1,6 +1,6 @@
 import { Plus } from "lucide-react";
 import styles from "./ShoppingForm.module.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 /**
  * console.log(styles)
@@ -11,12 +11,13 @@ import { useState } from "react";
  */
 
 function ShoppingForm({ onSubmit }) {
+  const inputRef = useRef(null);
   const [name, setname] = useState("");
   const [quantity, setQuantity] = useState("");
   const [unit, setUnit] = useState("unidade");
   const [category, setCategory] = useState("padaria");
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     const formData = {
@@ -26,7 +27,14 @@ function ShoppingForm({ onSubmit }) {
       category,
     };
 
-    onSubmit(formData);
+    await onSubmit(formData);
+
+    setname("");
+    setQuantity("");
+    setUnit("unidade");
+    setCategory("padaria");
+
+    inputRef.current?.focus();
   }
 
   return (
@@ -55,6 +63,7 @@ function ShoppingForm({ onSubmit }) {
         </label>
         <div className={styles.quantityInput}>
           <input
+            ref={inputRef}
             className={styles.input}
             type="number"
             id="quantity"

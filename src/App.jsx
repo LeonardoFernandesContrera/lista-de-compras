@@ -3,37 +3,50 @@ import styles from "./App.module.css";
 import bgImage from "./assets/bg-image.jpg";
 import ShoppingForm from "./components/ShoppingForm";
 import ListItem from "./components/ListItem.jsx";
-import { useState } from "react";
-
-let ITEMS = [
-  {
-    id: 1,
-    name: "Banana",
-    category: "fruta",
-    quantity: 10,
-    unity: "unidade",
-    purchased: false,
-  },
-];
+import { useEffect, useState } from "react";
 
 function App() {
-  const [items, setItems] = useState(ITEMS);
-  let id = (items[items.length - 1]?.id ?? 1) + 1;
+  const [items, setItems] = useState([]);
+  // Estado derivado
+  const purchasedItems = items.filter((item) => item.purchased).length;
 
-  function handleSubmit(formData) {
-    const newItem = {
-      ...formData,
-      id,
-    };
-    setItems([...items, newItem]);
+  // Hook
+
+  useEffect(() => {
+    fetch("http://localhost:3333/items")
+      .then((res) => res.json())
+      .then((data) => setItems(data));
+  }, []);
+
+  async function handleCreate(formData) {
+    const res = await fetch("http://localhost:3333/items", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({ ...formData, purchased: false }),
+    });
+    const data = await res.json();
+    setItems([...items, data]);
   }
 
-  function handleDelete(id) {
+  async function handleDelete(id) {
+    const res = await fetch("http://localhost:3333/items/" + id, {
+      method: "DELETE",
+    });
     const newItems = items.filter((item) => item.id !== id);
     setItems(newItems);
   }
 
-  function handleCheckedChange(id, checked) {
+  async function handleCheckedChange(id, checked) {
+    const res = await fetch("http://localhost:3333/items/" + id, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "PATCH", //GET, POST, PUT, PATCH, DELETE
+      body: JSON.stringify({ purchased: checked }),
+    });
+
     const newItems = items.map((item) =>
       item.id === id ? { ...item, purchased: checked } : item
     );
@@ -49,7 +62,11 @@ function App() {
       <main className={styles.main}>
         <h1>Lista de Compras</h1>
 
-        <ShoppingForm onSubmit={(formData) => handleSubmit(formData)} />
+        <ShoppingForm onSubmit={handleCreate} />
+
+        <div className={styles.purchasedItems}>
+          Itens comprados <span> {purchasedItems}</span>
+        </div>
 
         <ul className={styles.itemList}>
           {items.map((item) => (

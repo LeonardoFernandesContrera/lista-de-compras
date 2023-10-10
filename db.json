@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Banana",
+      "category": "fruta",
+      "quantity": 10,
+      "unity": "unidade",
+      "purchased": true
+    },
+    {
+      "name": "pão",
+      "quantity": "1",
+      "unit": "kilograma",
+      "category": "padaria",
+      "id": 3,
+      "purchased": true
+    },
+    {
+      "name": "Contra-Filé",
+      "quantity": "2",
+      "unit": "kilograma",
+      "category": "carne",
+      "purchased": false,
+      "id": 4
+    }
+  ]
+}

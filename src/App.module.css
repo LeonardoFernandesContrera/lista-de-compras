@@ -31,3 +31,19 @@
 .itemList li + li {
   margin-top: 0.5rem;
 }
+
+.purchasedItems {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--brand-purple-light);
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.purchasedItems span {
+  font-size: 0.875rem;
+  color: var(--gray-100);
+  background: var(--gray-300);
+  border-radius: 9999px;
+  padding: 0.25rem 0.5rem;
+}

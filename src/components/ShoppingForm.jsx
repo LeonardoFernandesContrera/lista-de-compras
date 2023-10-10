@@ -44,6 +44,8 @@ function ShoppingForm({ onSubmit }) {
           id="name"
           value={name}
           onChange={(event) => setname(event.target.value)}
+          minLength={2}
+          required
         />
       </div>
 
@@ -58,6 +60,8 @@ function ShoppingForm({ onSubmit }) {
             id="quantity"
             value={quantity}
             onChange={(event) => setQuantity(event.target.value)}
+            required
+            min={1}
           />
           <select
             id="unit"

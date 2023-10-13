@@ -13,7 +13,7 @@ function ListItem({ item, onDelete, onCheckedChange }) {
       <div>
         <p>{item.name}</p>
         <span>
-          {item.quantity} {item.unit}
+          {item.quantity} {item.quantity > 1 ? item.unit + "s" : item.unit}
         </span>
       </div>
 

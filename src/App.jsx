@@ -7,15 +7,20 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   // Estado derivado
   const purchasedItems = items.filter((item) => item.purchased).length;
 
   // Hook
 
   useEffect(() => {
+    setIsLoading(true);
     fetch("http://localhost:3333/items")
       .then((res) => res.json())
-      .then((data) => setItems(data));
+      .then((data) => {
+        setIsLoading(false);
+        setItems(data);
+      });
   }, []);
 
   async function handleCreate(formData) {
@@ -69,14 +74,20 @@ function App() {
         </div>
 
         <ul className={styles.itemList}>
-          {items.map((item) => (
-            <ListItem
-              key={item.id}
-              item={item}
-              onDelete={handleDelete}
-              onCheckedChange={handleCheckedChange}
-            ></ListItem>
-          ))}
+          {items.length > 0 ? (
+            items.map((item) => (
+              <ListItem
+                key={item.id}
+                item={item}
+                onDelete={handleDelete}
+                onCheckedChange={handleCheckedChange}
+              ></ListItem>
+            ))
+          ) : isLoading ? (
+            <p></p>
+          ) : (
+            <p>Não há nenhum item na Lista </p>
+          )}
         </ul>
       </main>
     </div>
